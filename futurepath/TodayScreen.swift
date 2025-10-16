@@ -105,7 +105,7 @@ struct TodayScreen: View {
                     onCancel: closeAdd,
                     onSave: saveNewTask
                 )
-                .presentationDetents([.medium, .large])
+                .presentationDetents([.large])
             }
         }
         .tint(theme.accentColor)

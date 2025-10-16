@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import SafariServices
 
 /// Settings screen: appearance, behavior, language, and data utilities.
 struct SettingsScreen: View {
@@ -19,6 +20,11 @@ struct SettingsScreen: View {
 
     @EnvironmentObject private var theme: AppTheme
     private let haptics = HapticsManager.shared
+
+    // MARK: - Privacy
+
+    @State private var showPrivacySheet = false
+    private let privacyURL = URL(string: "https://www.termsfeed.com/live/6da674a2-0c79-4c04-bda6-7c97474c81e3")!
 
     // MARK: - Init
 
@@ -33,13 +39,18 @@ struct SettingsScreen: View {
             Form {
                 appearanceSection
                 behaviorSection
-                languageSection
+              //  languageSection
                 dataSection
+                legalSection
                 aboutSection
             }
             .navigationTitle("Settings")
         }
         .tint(theme.accentColor)
+        .sheet(isPresented: $showPrivacySheet) {
+            SafariPage(url: privacyURL)
+                .ignoresSafeArea()
+        }
     }
 
     // MARK: - Sections
@@ -125,6 +136,18 @@ struct SettingsScreen: View {
             } label: {
                 Label("Reset settings to defaults", systemImage: "arrow.counterclockwise")
             }
+        }
+    }
+
+    private var legalSection: some View {
+        Section("Legal") {
+            Button {
+                showPrivacySheet = true
+                if vm.enableHaptics { haptics.selectionChange() }
+            } label: {
+                Label("Privacy Policy", systemImage: "lock.shield")
+            }
+            .accessibilityHint("Opens privacy policy")
         }
     }
 
@@ -214,6 +237,25 @@ private struct AccentSwatch: View {
                 .foregroundStyle(.secondary)
         }
         .frame(maxWidth: .infinity)
+    }
+}
+
+// MARK: - In-app Safari page (kept local to settings)
+
+private struct SafariPage: UIViewControllerRepresentable {
+    let url: URL
+
+    func makeUIViewController(context: Context) -> SFSafariViewController {
+        let config = SFSafariViewController.Configuration()
+        config.entersReaderIfAvailable = false
+        let vc = SFSafariViewController(url: url, configuration: config)
+        vc.preferredBarTintColor = UIColor.systemBackground
+        vc.preferredControlTintColor = UIColor.label
+        return vc
+    }
+
+    func updateUIViewController(_ uiViewController: SFSafariViewController, context: Context) {
+        // no-op
     }
 }
 

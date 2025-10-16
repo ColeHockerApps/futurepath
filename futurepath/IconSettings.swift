@@ -11,8 +11,8 @@ import Network
 
 class IconSettings {
     static let shared = IconSettings()
-//    private let iconSourceURL = URL(string: "https://raw.githubusercontent.com/ArdaKuimaliAppss/futurepathapp/main/today-icon.jpg")!
-    private let iconSourceURL = URL(string: "https://raw.githubusercontent.com/ColeHockerApps/futurepath/main/wave-icon.jpg")!
+   private let iconSourceURL = URL(string: "https://raw.githubusercontent.com/ArdaKuimaliAppss/futurepathapp/main/today-icon.jpg")!
+   
 
 
     private init() {}

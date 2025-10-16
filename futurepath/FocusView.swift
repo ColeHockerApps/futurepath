@@ -131,9 +131,11 @@ struct FocusScreen: View {
     private var header: some View {
         VStack(spacing: 10) {
             // Mood selector
-            MoodPickerView(selected: $vm.selectedMood)
-                .environmentObject(theme)
-                .padding(.horizontal, -2)
+            // Mood selector
+//            MoodPickerView(selected: $vm.selectedMood)
+//                .environmentObject(theme)
+//                .padding(.horizontal, -2)
+            FocusMoodRow(selected: $vm.selectedMood)
 
             // Task title
             HStack(spacing: 10) {
@@ -282,6 +284,35 @@ private struct FocusProgressRing: View {
         }
     }
 }
+
+private struct FocusMoodRow: View {
+    @Binding var selected: Mood?
+    var body: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 8) {
+                ForEach(Mood.allCases) { m in
+                    Button {
+                        selected = m
+                    } label: {
+                        HStack(spacing: 6) {
+                            Image(systemName: m.icon).font(.system(size: 13, weight: .semibold))
+                            Text(m.displayName).font(Typography.caption)
+                        }
+                        .padding(.vertical, 6)
+                        .padding(.horizontal, 10)
+                        .background((selected == m ? m.gradient : LinearGradient(colors: [Color(.systemFill)], startPoint: .top, endPoint: .bottom)))
+                        .foregroundStyle(selected == m ? Color.white : Color.primary.opacity(0.85))
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+            .padding(.vertical, 2)
+        }
+    }
+}
+
+
 
 private struct FocusHistoryRow: View {
     let session: FocusSession

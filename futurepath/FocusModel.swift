@@ -123,7 +123,7 @@ final class FocusEngine: ObservableObject {
         progress = 0
 
         // Auto-save start
-        repo?.add(s)
+        if let repo { Task { @MainActor in repo.add(s) } }
 
         // Create timer publisher
         timerCancellable = Timer
@@ -143,8 +143,7 @@ final class FocusEngine: ObservableObject {
         if saveFinal, var s = session {
             s.isActive = false
             s.startTime = s.startTime ?? Date()
-            repo?.add(s)
-        }
+            if let repo { Task { @MainActor in repo.add(s) } }        }
 
         session = nil
         remaining = 0
@@ -168,8 +167,7 @@ final class FocusEngine: ObservableObject {
         timerCancellable = nil
         if var s = session {
             s.isActive = false
-            repo?.add(s)
-        }
+            if let repo { Task { @MainActor in repo.add(s) } }        }
         session = nil
         remaining = 0
         progress = 1

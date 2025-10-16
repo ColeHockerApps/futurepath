@@ -10,7 +10,7 @@ import Combine
 
 // MARK: - ViewModel
 
-@MainActor
+
 final class FocusViewModel: ObservableObject {
 
     // Dependencies
@@ -88,7 +88,7 @@ final class FocusViewModel: ObservableObject {
 
 // MARK: - Screen
 
-@MainActor
+
 struct FocusScreen: View {
 
     @StateObject private var vm: FocusViewModel

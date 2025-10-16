@@ -54,7 +54,7 @@ struct FocusSession: Identifiable, Codable, Equatable {
 
 // MARK: - FocusRepository (Persistence)
 
-@MainActor
+
 final class FocusRepository: ObservableObject {
     @Published private(set) var history: [FocusSession] = []
 

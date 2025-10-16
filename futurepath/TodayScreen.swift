@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 /// Main "Today" screen: mood picker + prioritized recommendations + quick add.
-@MainActor
+
 struct TodayScreen: View {
 
     // MARK: - ViewModels owned by this screen

@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 /// Persistent store for user settings with dual-write (UserDefaults + JSON backup).
-@MainActor
+
 final class SettingsStore: ObservableObject {
 
     // MARK: - Published

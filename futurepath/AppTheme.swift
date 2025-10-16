@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 /// Global theme manager controlling colors, typography, and appearance mode.
-@MainActor
+
 final class AppTheme: ObservableObject {
 
     // MARK: - Published state

@@ -10,7 +10,8 @@ import Combine
 
 /// Simple helper for managing Combine subscriptions safely.
 /// Instead of manually keeping a `Set<AnyCancellable>`, use `.store(in: bag)` for brevity.
-@MainActor
+
+
 final class AnyCancellableBag {
 
     // MARK: - Internal storage
@@ -62,3 +63,9 @@ struct AnyCancellableBag_Debug {
     }
 }
 #endif
+
+
+
+
+
+// MARK: - Convenience extension

@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 /// ViewModel for listing, filtering, and editing tasks for a given day.
-@MainActor
+
 final class TaskListViewModel: ObservableObject {
 
     // MARK: - Dependencies

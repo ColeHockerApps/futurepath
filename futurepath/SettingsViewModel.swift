@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 /// ViewModel bridging SettingsStore with UI controls and AppTheme.
-@MainActor
+
 final class SettingsViewModel: ObservableObject {
 
     // MARK: - Dependencies

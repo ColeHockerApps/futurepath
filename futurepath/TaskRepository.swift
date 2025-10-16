@@ -11,7 +11,7 @@ import Combine
 /// Standalone repository for task CRUD and querying.
 /// Stores a flat list of tasks for global search, filters, and utilities.
 /// Day-specific operations still live in `MoodRepository` via `DayPlan`.
-@MainActor
+
 final class TaskRepository: ObservableObject {
 
     // MARK: - Published State

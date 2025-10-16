@@ -66,7 +66,7 @@ struct JournalEntry: Identifiable, Codable, Equatable {
 // MARK: - JournalRepository (Persistence)
 
 /// Repository for CRUD operations and persistence of journal entries.
-@MainActor
+
 final class JournalRepository: ObservableObject {
 
     // Published state

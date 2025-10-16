@@ -10,7 +10,7 @@ import Combine
 
 // MARK: - ViewModel
 
-@MainActor
+
 final class JournalViewModel: ObservableObject {
 
     // Dependencies
@@ -83,7 +83,7 @@ final class JournalViewModel: ObservableObject {
 
 // MARK: - Screen
 
-@MainActor
+
 struct JournalScreen: View {
 
     @StateObject private var vm: JournalViewModel

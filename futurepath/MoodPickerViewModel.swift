@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 /// ViewModel for selecting today's mood and getting mood-based recommendations.
-@MainActor
+
 final class MoodPickerViewModel: ObservableObject {
 
     // MARK: - Dependencies

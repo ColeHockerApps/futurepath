@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 /// Aggregations for mood and task analytics. Pure computation layer.
-@MainActor
+
 final class StatsEngine {
 
     // MARK: - Types

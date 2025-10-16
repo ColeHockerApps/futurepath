@@ -10,7 +10,7 @@ import Combine
 import UIKit
 
 /// Global application state shared across the app.
-@MainActor
+
 final class AppState: ObservableObject {
 
     /// Available tabs in the root TabBar.

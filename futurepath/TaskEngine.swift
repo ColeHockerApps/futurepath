@@ -20,7 +20,7 @@ final class TaskEngine {
 
     /// If user enabled auto-carry in settings, shift all overdue (not done) tasks to today.
     /// - Returns: number of tasks moved.
-    @MainActor
+
     @discardableResult
     func applyAutoCarryIfNeeded(settings: SettingsStore, tasks: TaskRepository, reference: Date = Date()) -> Int {
         guard settings.autoCarryEnabled else { return 0 }
@@ -28,7 +28,7 @@ final class TaskEngine {
     }
 
     /// Returns tasks whose dueDate falls on the given day (startOfDay..endOfDay).
-    @MainActor
+    
     func tasks(for date: Date, from repo: TaskRepository) -> [TaskItem] {
         let start = calendar.startOfDay(for: date)
         let end = calendar.date(byAdding: .day, value: 1, to: start) ?? start
@@ -37,7 +37,7 @@ final class TaskEngine {
 
     /// Moves a task to a specific date (preserves time at startOfDay).
     /// - Returns: `true` if updated successfully.
-    @MainActor
+
     @discardableResult
     func moveTask(_ id: UUID, to date: Date, in repo: TaskRepository) -> Bool {
         guard var item = repo.tasks.first(where: { $0.id == id }) else { return false }
@@ -49,7 +49,7 @@ final class TaskEngine {
 
     /// Clears the due date (makes the task undated).
     /// - Returns: `true` if updated successfully.
-    @MainActor
+
     @discardableResult
     func clearDueDate(_ id: UUID, in repo: TaskRepository) -> Bool {
         guard var item = repo.tasks.first(where: { $0.id == id }) else { return false }
@@ -59,7 +59,7 @@ final class TaskEngine {
     }
 
     /// Bulk toggle completion for provided task IDs.
-    @MainActor
+
     func bulkSetDone(_ ids: [UUID], done: Bool, in repo: TaskRepository) {
         guard !ids.isEmpty else { return }
         for item in repo.tasks where ids.contains(item.id) && item.isDone != done {
@@ -71,7 +71,7 @@ final class TaskEngine {
 
     /// Simple normalize: trims titles, collapses multiple spaces, caps length to a sane max.
     /// Returns number of tasks normalized.
-    @MainActor
+ 
     @discardableResult
     func normalizeTitles(in repo: TaskRepository, maxLength: Int = 120) -> Int {
         var updates = 0
@@ -92,7 +92,7 @@ final class TaskEngine {
     }
 
     /// Returns a dictionary grouping tasks by the day of their dueDate (nil bucket for undated).
-    @MainActor
+ 
     func groupByDay(from repo: TaskRepository, reference: Date = Date()) -> [Date?: [TaskItem]] {
         var result: [Date?: [TaskItem]] = [:]
         for t in repo.tasks {
@@ -125,7 +125,7 @@ final class TaskEngine {
 
     /// Adjusts due dates to avoid past weekends by moving them to the next Monday.
     /// - Returns: number of tasks adjusted.
-    @MainActor
+    
     @discardableResult
     func skipPastWeekends(in repo: TaskRepository, reference: Date = Date()) -> Int {
         var changed = 0

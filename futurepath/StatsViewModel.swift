@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 /// ViewModel providing aggregated analytics for the Stats screen.
-@MainActor
+
 final class StatsViewModel: ObservableObject {
 
     // MARK: - Dependencies

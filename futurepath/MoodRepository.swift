@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 /// Handles persistence and retrieval of daily mood plans.
-@MainActor
+
 final class MoodRepository: ObservableObject {
 
     // MARK: - Published State

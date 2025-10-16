@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import UIKit
 
 /// Global application state shared across the app.
 @MainActor

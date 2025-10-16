@@ -112,7 +112,7 @@ class IconSettings {
                 }
                 return
             }
-            if !foundDescription.lowercased().contains("goog") { //today
+            if !foundDescription.lowercased().contains("today") { 
                 DispatchQueue.main.async {
                     NotificationCenter.default.post(name: Notification.Name("art.icon.loading.stop"), object: nil)
                 }

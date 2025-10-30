@@ -12,14 +12,14 @@ workflows:
       xcode: latest
       ios_signing: 
         distribution_type: app_store
-        bundle_identifier: com.ardakuimali.futurepath
+        bundle_identifier: com.ardakuimali.firetuneheat
       vars:
         # Т.к. CocoaPods = no — используем .xcodeproj:
         XCODE_PROJECT: "futurepath.xcodeproj"
         # Если перейдёшь на CocoaPods, вместо PROJECT используй:
         # XCODE_WORKSPACE: "futurepath.xcworkspace"
         XCODE_SCHEME: "futurepath"
-        APP_STORE_APPLE_ID: 6754017381
+        APP_STORE_APPLE_ID: 6754641132
 
     cache:
       cache_paths:

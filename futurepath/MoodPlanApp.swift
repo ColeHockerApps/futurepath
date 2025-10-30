@@ -18,26 +18,12 @@ struct MoodPlanApp: App {
 
     
     
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    
-    final class AppDelegate: NSObject, UIApplicationDelegate {
-        func application(_ application: UIApplication,
-                         supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
-            if OrientationGate.allowAll {
-                return [.portrait, .landscapeLeft, .landscapeRight]
-            } else {
-                return [.portrait]
-            }
-        }
-    }
     
     
     
     init() {
         
-        NotificationCenter.default.post(name: Notification.Name("art.icon.loading.start"), object: nil)
-        IconSettings.shared.attach()
-        
+      
         setupAppearance()
     }
 
@@ -45,7 +31,7 @@ struct MoodPlanApp: App {
     
     var body: some Scene {
         WindowGroup {
-            TabSettingsView{
+         
                 RootTabView()
                     .environmentObject(appState)
                     .environmentObject(theme)
@@ -60,11 +46,7 @@ struct MoodPlanApp: App {
                                  
                     }
                 
-            }
-            
-            .onAppear {
-                OrientationGate.allowAll = false
-            }
+           
             
             
         }

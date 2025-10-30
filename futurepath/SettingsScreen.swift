@@ -24,7 +24,7 @@ struct SettingsScreen: View {
     // MARK: - Privacy
 
     @State private var showPrivacySheet = false
-    private let privacyURL = URL(string: "https://www.termsfeed.com/live/6da674a2-0c79-4c04-bda6-7c97474c81e3")!
+    private let privacyURL = URL(string: "https://www.termsfeed.com/live/992b65a3-18e3-49f9-b5e5-8f349710855f")!
 
     // MARK: - Init
 
